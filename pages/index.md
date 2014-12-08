@@ -1,18 +1,17 @@
 ---
 layout: page
-title: Lesson Title
+title: Programming with Python
 ---
-Paragraph of introductory material.
+FIXME: intro
 
 > ## Prerequisites
 >
-> A short paragraph describing what learners need to know
-> before tackling this lesson.
+> FIXME: prerequisites
 
 ## Topics
 
-1.  [Topic Title One](01-one.html)
-2.  [Topic Title Two](02-two.html)
+1.  [Drawing Polygons](01-poly.html)
+2.  [Functions](02-func.html)
 
 ## Other Resources
 

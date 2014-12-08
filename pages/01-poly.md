@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Lesson Title
-subtitle: Topic Title One
+title: Programming with Python
+subtitle: Drawing Polygons
 minutes: 10
 ---
 > ## Learning Objectives
