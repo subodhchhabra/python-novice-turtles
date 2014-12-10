@@ -94,7 +94,7 @@ we can tell Python to use it like this:
 If everything is working,
 a new window should open to display a short black arrow pointing right:
 
-FIXME: image
+![forward50](img/forward50.png)
 
 The arrowhead is a **turtle** ---
 a simple drawing cursor that we can move with Python commands.
@@ -119,7 +119,7 @@ Try this:
 >>> turtle.left(90)
 ~~~
 
-FIXME: image
+![left90](img/left90.png)
 
 The picture hasn't changed,
 but the turtle is now pointing straight up,
@@ -132,7 +132,7 @@ it draws a line in that direction:
 >>> turtle.forward(50)
 ~~~
 
-FIXME: image
+![farward50_2](img/farward50_2.png)
 
 If we tell the turtle to turn left, go forward, turn left, and go forward again,
 the result is a square:
@@ -144,7 +144,7 @@ the result is a square:
 >>> turtle.forward(50)
 ~~~
 
-FIXME: image
+![square1](img/square1.png)
 
 We can erase the drawing by asking the turtle to clear the screen:
 
@@ -152,7 +152,7 @@ We can erase the drawing by asking the turtle to clear the screen:
 >>> turtle.clear()
 ~~~
 
-FIXME: image
+![clear1](img/clear1.png)
 
 If you look carefully,
 you'll see that this leaves the turtle pointing south.
@@ -163,7 +163,7 @@ we need to ask it to reset itself:
 >>> turtle.reset()
 ~~~
 
-FIXME: image
+![reset](img/reset.png)
 
 Notice that both `turtle.clear` and `turtle.reset` have empty parentheses
 after their names.
@@ -266,7 +266,7 @@ We now have everything we need to draw a square:
 ... 
 ~~~
 
-FIXME: image
+![square2](img/square2.png)
 
 This is much better than typing "forward", "left", "forward", "left"
 over and over again
@@ -298,7 +298,12 @@ and then turn left once.
 
 This loop could still be improved, though.
 To see why,
-clear the screen with `turtle.reset()`
+clear the screen with `turtle.reset()`:
+
+~~~ {.input}
+>>> turtle.reset()
+~~~
+
 and then run this:
 
 ~~~ {.input}
@@ -310,7 +315,7 @@ and then run this:
 
 The output is:
 
-FIXME: image
+![square3](img/square3.png)
 
 which is clearly not a square.
 It only takes a moment to realize that
@@ -340,13 +345,17 @@ As you can probably guess,
 We can use this to draw our square:
 
 ~~~ {.input}
+>>> turtle.reset()
+~~~
+
+~~~ {.input}
 >>> for side in range(4):
 ...     turtle.forward(60)
 ...     turtle.left(90)
 ... 
 ~~~
 
-FIXME: image
+![square4](img/square4.png)
 
 Using `range` this way makes the intent of our code even clearer,
 as does calling the **loop variable** `side` instead of `number`.
@@ -362,13 +371,17 @@ to create a hexagon,
 we do this:
 
 ~~~ {.input}
+>>> turtle.reset()
+~~~
+
+~~~ {.input}
 >>> for side in range(6):
 ...     turtle.forward(50)
 ...     turtle.left(60)
 ... 
 ~~~
 
-FIXME: output
+![polygon1](img/polygon1.png)
 
 These three lines now embody one of the core principles of good program design:
 every fact appears exactly once.
