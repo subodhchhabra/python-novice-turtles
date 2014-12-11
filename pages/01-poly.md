@@ -94,7 +94,7 @@ we can tell Python to use it like this:
 If everything is working,
 a new window should open to display a short black arrow pointing right:
 
-![forward50](../img/forward50.png)
+![forward50](fig/forward50.png)
 
 The arrowhead is a **turtle** ---
 a simple drawing cursor that we can move with Python commands.
@@ -119,7 +119,7 @@ Try this:
 >>> turtle.left(90)
 ~~~
 
-![left90](../img/left90.png)
+![left90](fig/left90.png)
 
 The picture hasn't changed,
 but the turtle is now pointing straight up,
@@ -132,7 +132,7 @@ it draws a line in that direction:
 >>> turtle.forward(50)
 ~~~
 
-![farward50_2](../img/farward50_2.png)
+![farward50_2](fig/farward50_2.png)
 
 If we tell the turtle to turn left, go forward, turn left, and go forward again,
 the result is a square:
@@ -144,7 +144,7 @@ the result is a square:
 >>> turtle.forward(50)
 ~~~
 
-![square1](../img/square1.png)
+![square1](fig/square1.png)
 
 We can erase the drawing by asking the turtle to clear the screen:
 
@@ -152,7 +152,7 @@ We can erase the drawing by asking the turtle to clear the screen:
 >>> turtle.clear()
 ~~~
 
-![clear1](../img/clear1.png)
+![clear1](fig/clear1.png)
 
 If you look carefully,
 you'll see that this leaves the turtle pointing south.
@@ -163,7 +163,7 @@ we need to ask it to reset itself:
 >>> turtle.reset()
 ~~~
 
-![reset](../img/reset.png)
+![reset](fig/reset.png)
 
 Notice that both `turtle.clear` and `turtle.reset` have empty parentheses
 after their names.
@@ -266,7 +266,7 @@ We now have everything we need to draw a square:
 ... 
 ~~~
 
-![square2](../img/square2.png)
+![square2](fig/square2.png)
 
 This is much better than typing "forward", "left", "forward", "left"
 over and over again
@@ -315,7 +315,7 @@ and then run this:
 
 The output is:
 
-![square3](../img/square3.png)
+![square3](fig/square3.png)
 
 which is clearly not a square.
 It only takes a moment to realize that
@@ -355,7 +355,7 @@ We can use this to draw our square:
 ... 
 ~~~
 
-![square4](../img/square4.png)
+![square4](fig/square4.png)
 
 Using `range` this way makes the intent of our code even clearer,
 as does calling the **loop variable** `side` instead of `number`.
@@ -381,7 +381,7 @@ we do this:
 ... 
 ~~~
 
-![polygon1](../img/polygon1.png)
+![polygon1](fig/polygon1.png)
 
 These three lines now embody one of the core principles of good program design:
 every fact appears exactly once.
