@@ -53,7 +53,7 @@ the same way we have been calling the turtle's methods:
 >>> square()
 ~~~
 
-FIXME: image
+![square1](fig/square1.png)
 
 Here's what just happened:
 
@@ -66,7 +66,7 @@ Here's what just happened:
     Python looks up that definition
     and executes those commands.
 
-FIXME: diagram
+![square2](fig/square2.png)
 
 A function that draws the same square we've been drawing all along
 may not seem very useful,
@@ -81,7 +81,7 @@ but clear the screen and run this:
 
 The output is eight squares laid out on top of each other:
 
-FIXME: image
+![eight squares](fig/eight_squares.png)
 
 We could draw this in other ways ---
 in fact,
@@ -107,7 +107,7 @@ def square(length):
 When we enter this definition,
 it takes the place of the previous one:
 
-FIXME: figure
+![square 20, square 30](fig/square20_30.png)
 
 In it,
 the function `square` has a **parameter** called `length`.
@@ -139,11 +139,11 @@ This lets us draw images like this:
 ~~~ {.input}
 >>> for size in [20, 40, 60]:
 ...     square(size)
-...     left(15)
+...     turtle.left(15)
 ...
 ~~~
 
-FIXME: image
+![square left 15](fig/square_left_15.png)
 
 Notice,
 by the way,
@@ -175,7 +175,7 @@ nothing happens until we actually call the function:
 
 but then the turtle draws this:
 
-FIXME: image
+![hexagon](fig/hexagon.png)
 
 and if we call this:
 
@@ -185,7 +185,7 @@ and if we call this:
 
 we get:
 
-FIXME: image
+![octagon](fig/octagon.png)
 
 > ## Variable Names {.callout}
 >
@@ -207,7 +207,7 @@ Here's a function that creates a "flower" like the one we drew earlier:
 The first two control the drawing of the whole flower,
 while the other three control the shape of each petal:
 
-FIXME: diagram
+![eight-squares-flower](fig/eight-squares-flower.png)
 
 We can use this to draw the eight-squares flower we did earlier:
 
@@ -220,7 +220,7 @@ which means,
 each 50 pixels in size,
 turning 45 degrees between each one."
 
-FIXME: image
+![triangle-flower](fig/triangle-flower.png)
 
 We can also use it to draw shapes like this:
 
@@ -282,18 +282,18 @@ and here's what happens when we call `one_plus_one(10)`:
     which gets its name from the fact that values being passed to function calls
     are stacked on top of one another.
 
-    FIXME: diagram
+![call-stack-01](fig/call-stack-01.png)
 
 2.  Python then creates a new variable `first` in the **stack frame**
     it is using to keep track of what's happening inside `one_plus_one`
     and gives `first` the value 11 (which is 10 + 1).
 
-    FIXME: diagram
+![call-stack-02](fig/call-stack-02.png)
 
 3.  `one_plus_one` now calls `double`,
     so Python creates another stack frame and passes in the value 11.
 
-    FIXME: diagram
+![call-stack-03](fig/call-stack-03.png)
 
     Notice that there are now two variables called `value`,
     but since they are in different stack frames,
@@ -306,11 +306,13 @@ and here's what happens when we call `one_plus_one(10)`:
     There,
     it puts the value 22 in a newly-created variable called `second`:
 
-    FIXME: diagram
+![call-stack-04](fig/call-stack-04.png)
 
 5.  The function `one_plus_one` finally returns 23 (which is 22 + 1),
     so Python throws away that function call's stack frame
     and prints the final result.
+
+See more on [call stack from pythontutor.com](http://goo.gl/nPfnnt)
 
 This probably seems like a lot of trouble to go through,
 but it's absolutely essential.

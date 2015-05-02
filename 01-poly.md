@@ -45,7 +45,7 @@ let's do some simple arithmetic:
 just like `cat` and `cd` are commands in the shell.
 The difference is that `print` is being interpreted by Python:
 
-FIXME: figure showing Python on top of the shell
+![python-shell](fig/python-shell.png)
 
 While a lot of powerful commands are built into Python,
 even more live in the **libraries** those commands are used to build.

@@ -32,7 +32,7 @@ and then move it like this:
 >>> slowpoke.forward(50)
 ~~~
 
-FIXME: image
+![slowpoke1](fig/slowpoke1.png)
 
 We can now create a second turtle and move it south:
 
@@ -42,7 +42,7 @@ We can now create a second turtle and move it south:
 >>> speedy.forward(75)
 ~~~
 
-FIXME: image
+![speedy1](fig/speedy1.png)
 
 It can be hard to keep track of which turtle is which,
 so let's put them back in the starting position and change their colors:
@@ -54,7 +54,7 @@ so let's put them back in the starting position and change their colors:
 >>> speedy.color('green')
 ~~~
 
-FIXME: image
+![turtle colors](fig/turtle-color.png)
 
 We can only see `speedy` (the green turtle)
 because it's on top of `slowpoke`.
@@ -66,7 +66,7 @@ Let's move them again:
 >>> speedy.forward(75)
 ~~~
 
-FIXME: image
+![turtle moves](fig/turtle-color-move.png)
 
 Now try this:
 
@@ -116,7 +116,7 @@ so we can see that it's on the right path:
 >>> speedy.forward(75)
 ~~~
 
-FIXME: image
+![turtle chase](fig/turtle-chase1.png)
 
 We now have a way to make one turtle chase another.
 The slow turtle --- the prey in this scenario ---
@@ -196,7 +196,7 @@ for step in range(50):
     speedy.forward(5)
 ~~~
 
-FIXME: image
+![turtle chase2](fig/turtle-chase2.gif)
 
 This is the curve we want,
 but if we watch the simulation run
