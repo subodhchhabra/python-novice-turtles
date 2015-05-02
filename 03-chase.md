@@ -73,11 +73,15 @@ Now try this:
 ~~~ {.input}
 >>> print slowpoke.position()
 ~~~
+
 ~~~ {.output}
 (50.00,0.00)
+~~~
+
 ~~~ {.input}
 >>> print speedy.position()
 ~~~
+
 ~~~ {.output}
 (0.00,-75.00)
 ~~~
