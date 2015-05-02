@@ -1,40 +1,35 @@
 ---
 layout: page
-title: Programming with Python
-subtitle: Chasing Dinosaurs
+title: 파이썬 프로그래밍
+subtitle: 공룡 따라잡기
 minutes: 20
 ---
-> ## Learning Objectives
+> ## 학습 목표
 >
-> *   Create and control multiple turtles.
-> *   Use instance variables to record state.
+> *   거북이 다수를 생성하고 제어한다.
+> *   상태를 기록하는 인스턴스 변수(instance variable) 사용한다.
 
-We don't have to use just one turtle for drawing:
-the `turtle` library will let us create as many as we want.
-To start,
-let's import a **class** called `Turtle`
-(with an upper-case 'T')
-from the `turtle` library:
+그리기하는데 단지 한마리 거북이를 사용할 필요는 없다:
+`turtle` 라이브러리를 통해서 원하는 수만큼 거북이를 생성할 수 있다.
+시작하기 위해서, `turtle` 라이브러리에서 `Turtle` (대문자 'T') **클래스**를 가져온다.
 
 ~~~ {.input}
 >>> from turtle import Turtle
 ~~~
 
-We can now create a new turtle called `slowpoke` like this:
+다음과 같이 `slowpoke`라는 새로운 거북이를 생성한다:
 
 ~~~ {.input}
 >>> slowpoke = Turtle()
 ~~~
 
-and then move it like this:
+그리고, 다음과 같이 거북이를 이동한다.
 
 ~~~ {.input}
 >>> slowpoke.forward(50)
 ~~~
 
-FIXME: image
-
-We can now create a second turtle and move it south:
+이제 두번째 거북이를 생성하고 아래쪽으로 이동한다.
 
 ~~~ {.input}
 >>> speedy = Turtle()
@@ -42,10 +37,8 @@ We can now create a second turtle and move it south:
 >>> speedy.forward(75)
 ~~~
 
-FIXME: image
-
-It can be hard to keep track of which turtle is which,
-so let's put them back in the starting position and change their colors:
+이 거북이가 저 거북인지 추적하기 어려울 수 있다.
+그래서, 시작 위치로 다시 되돌려 놓고 색깔을 변경한다:
 
 ~~~ {.input}
 >>> slowpoke.reset()
@@ -54,11 +47,8 @@ so let's put them back in the starting position and change their colors:
 >>> speedy.color('green')
 ~~~
 
-FIXME: image
-
-We can only see `speedy` (the green turtle)
-because it's on top of `slowpoke`.
-Let's move them again:
+`speedy` (녹색 거북이)만 볼 수 있는데 이유는 `slowpoke` 위에 있기 때문이다.
+다시 움직여보자.
 
 ~~~ {.input}
 >>> slowpoke.forward(50)
@@ -66,25 +56,28 @@ Let's move them again:
 >>> speedy.forward(75)
 ~~~
 
-FIXME: image
-
-Now try this:
+이제 다음과 같이 시도해보자.
 
 ~~~ {.input}
 >>> print slowpoke.position()
 ~~~
+
 ~~~ {.output}
 (50.00,0.00)
+~~~
+
 ~~~ {.input}
 >>> print speedy.position()
 ~~~
+
 ~~~ {.output}
 (0.00,-75.00)
 ~~~
 
-The pair `(50.00,0.00)` is called a **tuple**.
-Python uses tuples to store values that have parts,
-like these (x,y) coordinate pairs.
+짝 `(50.00,0.00)`을 **튜플(tuple)**이라고 부른다.
+파이썬은 튜플을 사용해서 (x,y) 좌표계처럼 부분을 갖는 값을 저장한다.
+
+
 
 Given `speedy` and `slowpoke`'s positions,
 we could do a bit of trigonometry
