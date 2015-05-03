@@ -23,6 +23,7 @@
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
+      <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <h1 class="title">Programming with Python</h1>
@@ -39,7 +40,7 @@
 <li>Use <code>for</code> loops to draw simple polygons.</li>
 </ul>
 </blockquote>
-<p>Let's start by running Python interactively in a command shell:</p>
+<p>Let’s start by running Python interactively in a command shell:</p>
 <pre class="input"><code>$ python</code></pre>
 <pre class="output"><code>Python 2.7.8 |Anaconda 2.1.0 (x86_64)| (default, Aug 21 2014, 15:21:46) 
 [GCC 4.2.1 (Apple Inc. build 5577)] on darwin
@@ -47,17 +48,19 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 Anaconda is brought to you by Continuum Analytics.
 Please check out: http://continuum.io/thanks and https://binstar.org
 &gt;&gt;&gt; </code></pre>
-<p>The <code>&gt;&gt;&gt;</code> prompt is Python's equivalent of the <code>$</code> prompt that the shell uses, and shows that Python is ready to accept commands. To make sure everything's working, let's do some simple arithmetic:</p>
+<p>The <code>&gt;&gt;&gt;</code> prompt is Python’s equivalent of the <code>$</code> prompt that the shell uses, and shows that Python is ready to accept commands. To make sure everything’s working, let’s do some simple arithmetic:</p>
 <pre class="input"><code>&gt;&gt;&gt; print 1 + 2</code></pre>
 <pre class="output"><code>3</code></pre>
 <p><code>print</code> is a command, just like <code>cat</code> and <code>cd</code> are commands in the shell. The difference is that <code>print</code> is being interpreted by Python:</p>
-<p>FIXME: figure showing Python on top of the shell</p>
+<div class="figure">
+<img src="fig/python-shell.png" alt="python-shell" /><p class="caption">python-shell</p>
+</div>
 <p>While a lot of powerful commands are built into Python, even more live in the <strong>libraries</strong> those commands are used to build. In order to use a library, we need to <strong>import</strong> it like this:</p>
 <pre class="input"><code>&gt;&gt;&gt; import turtle</code></pre>
-<p>This command does not produce any output: since everything worked, it doesn't need our attention. We can check that the library has been loaded by trying to print it:</p>
+<p>This command does not produce any output: since everything worked, it doesn’t need our attention. We can check that the library has been loaded by trying to print it:</p>
 <pre class="input"><code>&gt;&gt;&gt; print turtle</code></pre>
 <pre class="output"><code>&lt;module &#39;turtle&#39; from &#39;/Users/gvwilson/anaconda/lib/python2.7/lib-tk/turtle.pyc&#39;&gt;</code></pre>
-<p>That message doesn't mean anything to us yet, but it does confirm that the library has been loaded. If it hadn't been, or if we mis-typed the name, we would get an error message:</p>
+<p>That message doesn’t mean anything to us yet, but it does confirm that the library has been loaded. If it hadn’t been, or if we mis-typed the name, we would get an error message:</p>
 <pre class="input"><code>&gt;&gt;&gt; print hamster</code></pre>
 <pre class="error"><code>Traceback (most recent call last):
   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
@@ -68,7 +71,7 @@ NameError: name &#39;hamster&#39; is not defined</code></pre>
 <div class="figure">
 <img src="fig/forward50.png" alt="forward50" /><p class="caption">forward50</p>
 </div>
-<p>The arrowhead is a <strong>turtle</strong> --- a simple drawing cursor that we can move with Python commands. The line is 50 pixels long and shows how the turtle has recently moved.</p>
+<p>The arrowhead is a <strong>turtle</strong> — a simple drawing cursor that we can move with Python commands. The line is 50 pixels long and shows how the turtle has recently moved.</p>
 <div id="turtles" class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Turtles</h2>
@@ -77,13 +80,13 @@ NameError: name &#39;hamster&#39; is not defined</code></pre>
 <p>FIXME: explain origins of turtle graphics</p>
 </div>
 </div>
-<p>The expression <code>turtle.forward</code> is an example of <strong>dotted notation</strong>. The word on the left of the dot identifies the thing that's doing the action; the word on the right is something it knows how to do. Since we want to tell the turtle how far to go when we ask it to move forward, we have to give <code>turtle.forward</code> a number (in this case, 50).</p>
+<p>The expression <code>turtle.forward</code> is an example of <strong>dotted notation</strong>. The word on the left of the dot identifies the thing that’s doing the action; the word on the right is something it knows how to do. Since we want to tell the turtle how far to go when we ask it to move forward, we have to give <code>turtle.forward</code> a number (in this case, 50).</p>
 <p>Turtles know how to do many other things as well. Try this:</p>
 <pre class="input"><code>&gt;&gt;&gt; turtle.left(90)</code></pre>
 <div class="figure">
 <img src="fig/left90.png" alt="left90" /><p class="caption">left90</p>
 </div>
-<p>The picture hasn't changed, but the turtle is now pointing straight up, i.e., 90 degrees counter-clockwise from its previous heading. If we tell the turtle to move forward again, it draws a line in that direction:</p>
+<p>The picture hasn’t changed, but the turtle is now pointing straight up, i.e., 90 degrees counter-clockwise from its previous heading. If we tell the turtle to move forward again, it draws a line in that direction:</p>
 <pre class="input"><code>&gt;&gt;&gt; turtle.forward(50)</code></pre>
 <div class="figure">
 <img src="fig/farward50_2.png" alt="farward50_2" /><p class="caption">farward50_2</p>
@@ -101,16 +104,16 @@ NameError: name &#39;hamster&#39; is not defined</code></pre>
 <div class="figure">
 <img src="fig/clear1.png" alt="clear1" /><p class="caption">clear1</p>
 </div>
-<p>If you look carefully, you'll see that this leaves the turtle pointing south. If we want to clear the screen <em>and</em> put the turtle back in the starting position, we need to ask it to reset itself:</p>
+<p>If you look carefully, you’ll see that this leaves the turtle pointing south. If we want to clear the screen <em>and</em> put the turtle back in the starting position, we need to ask it to reset itself:</p>
 <pre class="input"><code>&gt;&gt;&gt; turtle.reset()</code></pre>
 <div class="figure">
 <img src="fig/reset.png" alt="reset" /><p class="caption">reset</p>
 </div>
-<p>Notice that both <code>turtle.clear</code> and <code>turtle.reset</code> have empty parentheses after their names. We use parentheses whenever we are asking a turtle (or anything else) to do an action --- in technical terms, to execute a <strong>method</strong>. If we leave off the parentheses, Python just shows us that the method we're talking about exists:</p>
+<p>Notice that both <code>turtle.clear</code> and <code>turtle.reset</code> have empty parentheses after their names. We use parentheses whenever we are asking a turtle (or anything else) to do an action — in technical terms, to execute a <strong>method</strong>. If we leave off the parentheses, Python just shows us that the method we’re talking about exists:</p>
 <pre class="input"><code>&gt;&gt;&gt; turtle.forward
 &lt;function forward at 0x1007cb398&gt;</code></pre>
 <pre class="output"><code>&lt;function forward at 0x1007cb398&gt;</code></pre>
-<p>Suppose we want to draw our square again, but make it larger. We could use up-arrow to cycle through previous commands, just as we do in the shell, but entering them one by one would be tedious. Instead, let's get the computer to repeat things for us.</p>
+<p>Suppose we want to draw our square again, but make it larger. We could use up-arrow to cycle through previous commands, just as we do in the shell, but entering them one by one would be tedious. Instead, let’s get the computer to repeat things for us.</p>
 <p>The first step looks like this:</p>
 <pre class="input"><code>&gt;&gt;&gt; for number in [1, 2, 3]:
 ...     print 9
@@ -118,7 +121,7 @@ NameError: name &#39;hamster&#39; is not defined</code></pre>
 <pre class="output"><code>9
 9
 9</code></pre>
-<p>The first line starts a <code>for</code> loop. It tells Python that we want to repeat a command once for each value in a list. The list is written as <code>[1, 2, 3]</code>, and the command to be repeated --- <code>print 9</code> --- is indented under the first line.</p>
+<p>The first line starts a <code>for</code> loop. It tells Python that we want to repeat a command once for each value in a list. The list is written as <code>[1, 2, 3]</code>, and the command to be repeated — <code>print 9</code> — is indented under the first line.</p>
 <p>The word <code>number</code> is a <strong>variable</strong>. Each time Python executes the loop, it <strong>assigns</strong> the next value from the list to the variable. We can then use the variable inside the loop like this:</p>
 <pre class="input"><code>&gt;&gt;&gt; for number in [1, 2, 3]:
 ...     print number
@@ -126,7 +129,7 @@ NameError: name &#39;hamster&#39; is not defined</code></pre>
 <pre class="output"><code>1
 2
 3</code></pre>
-<p>There is nothing special about the name <code>number</code> --- we could equally well write the loop like this:</p>
+<p>There is nothing special about the name <code>number</code> — we could equally well write the loop like this:</p>
 <pre class="input"><code>&gt;&gt;&gt; for thing in [1, 2, 3]:
 ...     print thing
 ... </code></pre>
@@ -152,17 +155,17 @@ NameError: name &#39;hamster&#39; is not defined</code></pre>
 <div class="figure">
 <img src="fig/square2.png" alt="square2" /><p class="caption">square2</p>
 </div>
-<p>This is much better than typing &quot;forward&quot;, &quot;left&quot;, &quot;forward&quot;, &quot;left&quot; over and over again for two reasons:</p>
+<p>This is much better than typing “forward”, “left”, “forward”, “left” over and over again for two reasons:</p>
 <ol style="list-style-type: decimal">
-<li><p>It's easier to see the intent: the turtle is moving forward and turning left four times.</p></li>
-<li><p>It's easier to check its consistency: the key numbers 60 (the distance) and 90 (the angle) only appear once.</p></li>
+<li><p>It’s easier to see the intent: the turtle is moving forward and turning left four times.</p></li>
+<li><p>It’s easier to check its consistency: the key numbers 60 (the distance) and 90 (the angle) only appear once.</p></li>
 </ol>
 <p>Note that the indentation is really important. If we write this as:</p>
 <pre class="input"><code>&gt;&gt;&gt; for number in [1, 2, 3, 4]:
 ...     turtle.forward(60)
 ... 
 &gt;&gt;&gt; turtle.left(90)</code></pre>
-<p>we're telling the turtle to forward forward 60 pixels four times, and then turn left once.</p>
+<p>we’re telling the turtle to forward forward 60 pixels four times, and then turn left once.</p>
 <div id="fixme" class="challenge panel panel-success">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pencil"></span>FIXME</h2>
@@ -206,8 +209,8 @@ NameError: name &#39;hamster&#39; is not defined</code></pre>
 <div class="figure">
 <img src="fig/polygon1.png" alt="polygon1" /><p class="caption">polygon1</p>
 </div>
-<p>These three lines now embody one of the core principles of good program design: every fact appears exactly once. If we want to change the number of sides, we change the parameter to <code>range</code>; if we want to change the size, we change the parameter to <code>turtle.forward</code>, and if we want a different turning angle, we give <code>turtle.left</code> a different value. Equally, we can now read the behavior directly from the code: &quot;draw 6 lines, each 50 pixels long, at 60 degree angles to each other&quot;.</p>
-<p>But we're still not done, because we still need to type in three lines each time we want to draw a polygon. What we'd really like to do is type:</p>
+<p>These three lines now embody one of the core principles of good program design: every fact appears exactly once. If we want to change the number of sides, we change the parameter to <code>range</code>; if we want to change the size, we change the parameter to <code>turtle.forward</code>, and if we want a different turning angle, we give <code>turtle.left</code> a different value. Equally, we can now read the behavior directly from the code: “draw 6 lines, each 50 pixels long, at 60 degree angles to each other”.</p>
+<p>But we’re still not done, because we still need to type in three lines each time we want to draw a polygon. What we’d really like to do is type:</p>
 <pre class="input"><code>&gt;&gt;&gt; polygon(6, 50, 60)</code></pre>
 <p>and have Python figure out the rest. How we do that is the subject of the next lesson.</p>
 <div id="fixme-1" class="challenge panel panel-success">
@@ -220,6 +223,7 @@ NameError: name &#39;hamster&#39; is not defined</code></pre>
 </div>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/python-novice-turtles">Source</a>

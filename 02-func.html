@@ -23,6 +23,7 @@
           <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
         </a>
       </div>
+      <article>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <h1 class="title">Programming with Python</h1>
@@ -41,51 +42,61 @@
 ...     turtle.forward(50)
 ...     turtle.left(60)
 ... </code></pre>
-<p>But if we want to draw lots of different polygons, we'd like to be able to type:</p>
+<p>But if we want to draw lots of different polygons, we’d like to be able to type:</p>
 <pre class="input"><code>&gt;&gt;&gt; polygon(6, 50, 60)</code></pre>
-<p>and have Python figure out the rest. Let's build up to that in stages.</p>
-<p>First, let's create a new <strong>function</strong> to draw a fixed-size square:</p>
+<p>and have Python figure out the rest. Let’s build up to that in stages.</p>
+<p>First, let’s create a new <strong>function</strong> to draw a fixed-size square:</p>
 <pre class="input"><code>&gt;&gt;&gt; def square():
 ...     for side in range(4):
 ...         turtle.forward(60)
 ...         turtle.left(90)
 ...</code></pre>
-<p>Python doesn't print anything when we do this, and the turtle doesn't move, because we haven't actually asked it to do anything --- instead, we've told it how to do something new <em>if we ask</em>. To ask, we <strong>call</strong> the function the same way we have been calling the turtle's methods:</p>
+<p>Python doesn’t print anything when we do this, and the turtle doesn’t move, because we haven’t actually asked it to do anything — instead, we’ve told it how to do something new <em>if we ask</em>. To ask, we <strong>call</strong> the function the same way we have been calling the turtle’s methods:</p>
 <pre class="input"><code>&gt;&gt;&gt; square()</code></pre>
-<p>FIXME: image</p>
-<p>Here's what just happened:</p>
+<div class="figure">
+<img src="fig/square1.png" alt="square1" /><p class="caption">square1</p>
+</div>
+<p>Here’s what just happened:</p>
 <ol style="list-style-type: decimal">
-<li><p>When we define a new function using <code>def</code>, Python takes the commands that are indented under the first line --- the <strong>body</strong> of the function --- and stores them in memory.</p></li>
+<li><p>When we define a new function using <code>def</code>, Python takes the commands that are indented under the first line — the <strong>body</strong> of the function — and stores them in memory.</p></li>
 <li><p>When we call the function, Python looks up that definition and executes those commands.</p></li>
 </ol>
-<p>FIXME: diagram</p>
-<p>A function that draws the same square we've been drawing all along may not seem very useful, but clear the screen and run this:</p>
+<div class="figure">
+<img src="fig/square2.png" alt="square2" /><p class="caption">square2</p>
+</div>
+<p>A function that draws the same square we’ve been drawing all along may not seem very useful, but clear the screen and run this:</p>
 <pre class="input"><code>&gt;&gt;&gt; for petal in range(8):
 ...     square()
 ...     turtle.left(45)
 ...</code></pre>
 <p>The output is eight squares laid out on top of each other:</p>
-<p>FIXME: image</p>
-<p>We could draw this in other ways --- in fact, we will in <a href="FIXME">a later lesson</a> --- but we can already see that putting commands in functions makes other code easier to read. It also allows us to re-use things: we can now draw squares whenever we want without having to re-enter the same lines over and over.</p>
-<p>Of course, this would be more useful if we could change the size of the square. Let's re-define the function to allow that:</p>
+<div class="figure">
+<img src="fig/eight_squares.png" alt="eight squares" /><p class="caption">eight squares</p>
+</div>
+<p>We could draw this in other ways — in fact, we will in <a href="FIXME">a later lesson</a> — but we can already see that putting commands in functions makes other code easier to read. It also allows us to re-use things: we can now draw squares whenever we want without having to re-enter the same lines over and over.</p>
+<p>Of course, this would be more useful if we could change the size of the square. Let’s re-define the function to allow that:</p>
 <pre class="input"><code>def square(length):
 ...     for side in range(4):
 ...         turtle.forward(length)
 ...         turtle.left(90)
 ...</code></pre>
 <p>When we enter this definition, it takes the place of the previous one:</p>
-<p>FIXME: figure</p>
+<div class="figure">
+<img src="fig/square20_30.png" alt="square 20, square 30" /><p class="caption">square 20, square 30</p>
+</div>
 <p>In it, the function <code>square</code> has a <strong>parameter</strong> called <code>length</code>. Just as the variable <code>side</code> keeps track of where we are in the loop, <code>length</code> stores the value passed into <code>square</code> when we call it. For example, if we write:</p>
 <pre class="input"><code>&gt;&gt;&gt; square(20)</code></pre>
 <p>then <code>length</code> has the value 20, while if we write:</p>
 <pre class="input"><code>&gt;&gt;&gt; square(30)</code></pre>
-<p>then <code>length</code> has the value 30. When we move the turtle, we don't tell it to go forward a fixed amount. Instead, we write <code>turtle.forward(length)</code> to tell it to move <code>length</code> pixels. The function call <code>square(30)</code> therefore tells the turtle to draw a square 30 pixels on a side, while <code>square(90)</code> tells it to draw one three times larger. This lets us draw images like this:</p>
+<p>then <code>length</code> has the value 30. When we move the turtle, we don’t tell it to go forward a fixed amount. Instead, we write <code>turtle.forward(length)</code> to tell it to move <code>length</code> pixels. The function call <code>square(30)</code> therefore tells the turtle to draw a square 30 pixels on a side, while <code>square(90)</code> tells it to draw one three times larger. This lets us draw images like this:</p>
 <pre class="input"><code>&gt;&gt;&gt; for size in [20, 40, 60]:
 ...     square(size)
-...     left(15)
+...     turtle.left(15)
 ...</code></pre>
-<p>FIXME: image</p>
-<p>Notice, by the way, that we are now using the values in our loop for something real. The lists of numbers in our previous loops didn't matter --- their only purpose was to make the loop run the right number of times. Here, though, the three numbers 20, 40, and 60 are being passed into <code>square</code> to tell it how large a shape we want.</p>
+<div class="figure">
+<img src="fig/square_left_15.png" alt="square left 15" /><p class="caption">square left 15</p>
+</div>
+<p>Notice, by the way, that we are now using the values in our loop for something real. The lists of numbers in our previous loops didn’t matter — their only purpose was to make the loop run the right number of times. Here, though, the three numbers 20, 40, and 60 are being passed into <code>square</code> to tell it how large a shape we want.</p>
 <p>If one parameter is good, what about two or three?</p>
 <pre class="input"><code>&gt;&gt;&gt; def polygon(sides, length, angle):
 ...     for s in range(sides):
@@ -95,11 +106,15 @@
 <p>Once again, nothing happens until we actually call the function:</p>
 <pre class="input"><code>&gt;&gt;&gt; polygon(6, 30, 60)</code></pre>
 <p>but then the turtle draws this:</p>
-<p>FIXME: image</p>
+<div class="figure">
+<img src="fig/hexagon.png" alt="hexagon" /><p class="caption">hexagon</p>
+</div>
 <p>and if we call this:</p>
 <pre class="input"><code>&gt;&gt;&gt; polygon(8, 30, 135)</code></pre>
 <p>we get:</p>
-<p>FIXME: image</p>
+<div class="figure">
+<img src="fig/octagon.png" alt="octagon" /><p class="caption">octagon</p>
+</div>
 <div id="variable-names" class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>Variable Names</h2>
@@ -108,18 +123,22 @@
 <p>FIXME: explain meaningful names and the use of <code>s</code> in the function.</p>
 </div>
 </div>
-<p>Once we have a function, there's no reason not to use it in another one. Here's a function that creates a &quot;flower&quot; like the one we drew earlier:</p>
+<p>Once we have a function, there’s no reason not to use it in another one. Here’s a function that creates a “flower” like the one we drew earlier:</p>
 <pre class="input"><code>&gt;&gt;&gt; def flower(petal_sides, petal_angle, poly_sides, poly_length, poly_angle):
 ...     for s in range(petal_sides):
 ...         polygon(poly_sides, poly_length, poly_angle)
 ...         turtle.left(petal_angle)
 ...</code></pre>
 <p><code>flower</code> takes five parameters. The first two control the drawing of the whole flower, while the other three control the shape of each petal:</p>
-<p>FIXME: diagram</p>
+<div class="figure">
+<img src="fig/eight-squares-flower.png" alt="eight-squares-flower" /><p class="caption">eight-squares-flower</p>
+</div>
 <p>We can use this to draw the eight-squares flower we did earlier:</p>
 <pre class="input"><code>&gt;&gt;&gt; flower(8, 45, 4, 50, 90)</code></pre>
-<p>which means, &quot;Draw eight squares, each 50 pixels in size, turning 45 degrees between each one.&quot;</p>
-<p>FIXME: image</p>
+<p>which means, “Draw eight squares, each 50 pixels in size, turning 45 degrees between each one.”</p>
+<div class="figure">
+<img src="fig/triangle-flower.png" alt="triangle-flower" /><p class="caption">triangle-flower</p>
+</div>
 <p>We can also use it to draw shapes like this:</p>
 <pre class="{.input"><code>&gt;&gt;&gt; flower(3, 120, 3, 50, 120)</code></pre>
 <p>Put the two functions side by side for a moment and look at their loops:</p>
@@ -133,36 +152,57 @@
     <span class="kw">for</span> s in <span class="dt">range</span>(petal_sides):
         polygon(poly_sides, poly_length, poly_angle)
         turtle.left(petal_angle)</code></pre>
-<p>They both use a variable called <code>s</code> as a loop variable, but these are different variables --- they just happen to have the same name. To see how this works, let's define a simpler function:</p>
+<p>They both use a variable called <code>s</code> as a loop variable, but these are different variables — they just happen to have the same name. To see how this works, let’s define a simpler function:</p>
 <pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; <span class="kw">def</span> double(value):
 ...     <span class="kw">return</span> value * <span class="dv">2</span>
 ...</code></pre>
 <p>The <code>return</code> command tells the function what value to return to its caller:</p>
 <pre class="input"><code>&gt;&gt;&gt; print double(3)</code></pre>
 <pre class="output"><code>4</code></pre>
-<p>Here's another simple function that uses <code>double</code>:</p>
+<p>Here’s another simple function that uses <code>double</code>:</p>
 <pre class="input"><code>&gt;&gt;&gt; def one_plus_one(value):
 ...     first = value + 1
 ...     second = double(first)
 ...     return second + 1
 ...</code></pre>
-<p>and here's what happens when we call <code>one_plus_one(10)</code>:</p>
+<p>and here’s what happens when we call <code>one_plus_one(10)</code>:</p>
 <ol style="list-style-type: decimal">
-<li><p>Python puts the value 10 on a <strong>call stack</strong>, which gets its name from the fact that values being passed to function calls are stacked on top of one another.</p>
-<p>FIXME: diagram</p></li>
-<li><p>Python then creates a new variable <code>first</code> in the <strong>stack frame</strong> it is using to keep track of what's happening inside <code>one_plus_one</code> and gives <code>first</code> the value 11 (which is 10 + 1).</p>
-<p>FIXME: diagram</p></li>
-<li><p><code>one_plus_one</code> now calls <code>double</code>, so Python creates another stack frame and passes in the value 11.</p>
-<p>FIXME: diagram</p>
-<p>Notice that there are now two variables called <code>value</code>, but since they are in different stack frames, they are actually different variables --- they just happen to have the same name.</p></li>
-<li><p><code>double</code> returns 22 (which is 11 * 2), so Python discards the stack frame it was using to keep track of that call and starts using the one underneath it again. There, it puts the value 22 in a newly-created variable called <code>second</code>:</p>
-<p>FIXME: diagram</p></li>
-<li><p>The function <code>one_plus_one</code> finally returns 23 (which is 22 + 1), so Python throws away that function call's stack frame and prints the final result.</p></li>
+<li>Python puts the value 10 on a <strong>call stack</strong>, which gets its name from the fact that values being passed to function calls are stacked on top of one another.</li>
 </ol>
-<p>This probably seems like a lot of trouble to go through, but it's absolutely essential. Imagine what it would be like if all of the variables in a program were stored in one place. Whenever we wrote a new function, we would have to be careful not to use any name that anyone else was using in order to avoid accidentally referring to the wrong variable. In order to do that, we would have to read every single line of every function we called. Even if we were patient enough to do that, our program could break as soon as the authors of any of those functions rewrote their code and changed variables' names.</p>
-<p>The key idea here is <strong>encapsulation</strong>. and it's the key to writing correct, comprehensible programs. A function's job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something. That only works if functions don't interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.</p>
+<div class="figure">
+<img src="fig/call-stack-01.png" alt="call-stack-01" /><p class="caption">call-stack-01</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Python then creates a new variable <code>first</code> in the <strong>stack frame</strong> it is using to keep track of what’s happening inside <code>one_plus_one</code> and gives <code>first</code> the value 11 (which is 10 + 1).</li>
+</ol>
+<div class="figure">
+<img src="fig/call-stack-02.png" alt="call-stack-02" /><p class="caption">call-stack-02</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><code>one_plus_one</code> now calls <code>double</code>, so Python creates another stack frame and passes in the value 11.</li>
+</ol>
+<div class="figure">
+<img src="fig/call-stack-03.png" alt="call-stack-03" /><p class="caption">call-stack-03</p>
+</div>
+<pre><code>Notice that there are now two variables called `value`,
+but since they are in different stack frames,
+they are actually different variables ---
+they just happen to have the same name.</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><code>double</code> returns 22 (which is 11 * 2), so Python discards the stack frame it was using to keep track of that call and starts using the one underneath it again. There, it puts the value 22 in a newly-created variable called <code>second</code>:</li>
+</ol>
+<div class="figure">
+<img src="fig/call-stack-04.png" alt="call-stack-04" /><p class="caption">call-stack-04</p>
+</div>
+<ol start="5" style="list-style-type: decimal">
+<li>The function <code>one_plus_one</code> finally returns 23 (which is 22 + 1), so Python throws away that function call’s stack frame and prints the final result.</li>
+</ol>
+<p>See more on <a href="http://goo.gl/nPfnnt">call stack from pythontutor.com</a></p>
+<p>This probably seems like a lot of trouble to go through, but it’s absolutely essential. Imagine what it would be like if all of the variables in a program were stored in one place. Whenever we wrote a new function, we would have to be careful not to use any name that anyone else was using in order to avoid accidentally referring to the wrong variable. In order to do that, we would have to read every single line of every function we called. Even if we were patient enough to do that, our program could break as soon as the authors of any of those functions rewrote their code and changed variables’ names.</p>
+<p>The key idea here is <strong>encapsulation</strong>. and it’s the key to writing correct, comprehensible programs. A function’s job is to turn several operations into one so that we can think about a single function call instead of a dozen or a hundred statements each time we want to do something. That only works if functions don’t interfere with each other; if they do, we have to pay attention to the details once again, which quickly overloads our short-term memory.</p>
         </div>
       </div>
+      </article>
       <div class="footer">
         <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="https://github.com/swcarpentry/python-novice-turtles">Source</a>

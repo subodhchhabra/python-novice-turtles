@@ -12,6 +12,7 @@ FIXME: intro
 
 1.  [Drawing Polygons](01-poly.html)
 2.  [Functions](02-func.html)
+3.  [Chasing Dinosaurs](03-chase.html)
 
 ## Other Resources
 
