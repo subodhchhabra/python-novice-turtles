@@ -29,6 +29,8 @@ minutes: 20
 >>> slowpoke.forward(50)
 ~~~
 
+![slowpoke1](fig/slowpoke1.png)
+
 이제 두번째 `speedy`(빠른) 거북이를 생성하고 아래쪽으로 이동한다.
 
 ~~~ {.input}
@@ -36,6 +38,8 @@ minutes: 20
 >>> speedy.right(90)
 >>> speedy.forward(75)
 ~~~
+
+![speedy1](fig/speedy1.png)
 
 이 거북이가 저 거북인지 추적하기 어려울 수 있다.
 그래서, 시작 위치로 다시 되돌려 놓고 색깔을 변경한다:
@@ -47,6 +51,8 @@ minutes: 20
 >>> speedy.color('green')
 ~~~
 
+![turtle colors](fig/turtle-color.png)
+
 `speedy` (녹색 거북이)만 볼 수 있는데 이유는 `slowpoke` 위에 있기 때문이다.
 다시 움직여보자.
 
@@ -55,6 +61,8 @@ minutes: 20
 >>> speedy.right(90)
 >>> speedy.forward(75)
 ~~~
+
+![turtle moves](fig/turtle-color-move.png)
 
 이제 다음과 같이 시도해보자.
 
@@ -100,6 +108,8 @@ minutes: 20
 >>> speedy.setheading(new_heading)
 >>> speedy.forward(75)
 ~~~
+
+![turtle chase](fig/turtle-chase1.png)
 
 이제 한 거북이가 또다른 거북이를 뒤쫓을 수 있는 방법을 갖게 되었다.
 느린 거북이--- 이 시나리오에서 사냥감 ---는 고정된 경로를 따라 이동할 것이다.
@@ -168,6 +178,8 @@ for step in range(50):
     speedy.setheading(new_heading)
     speedy.forward(5)
 ~~~
+
+![turtle chase2](fig/turtle-chase2.gif)
 
 이것이 찾고 있던 곡선이다. 하지만, 만약 모의 시험을 실행한 것을 본다면 (즉, 거북이가 그리는 것을 관찰한다)
 `speedy`가 종종 `slowpoke` 보다 앞서가고, 주위를 맴돌고, 다시 돌아와서는 추적을 재개하기 위해서 다시 주위를 맴돈다.

@@ -48,10 +48,14 @@ minutes: 20
 >>> square()
 ~~~
 
+![square1](fig/square1.png)
+
 방금전에 발생한 것이 다음에 정리되어 있다.
 
 1.  `def`를 사용해서 새로운 함수를 정의할 때, 첫번째 행 아래 들여쓰기된 명령어-- 함수 **몸통(body)** --를 파이썬이 받아서 메모리에 저장한다.
 2.  함수를 호출할 때는, 파이썬은 함수가 정의된 것을 찾아서 해당 함수 명령어를 실행한다.
+
+![square2](fig/square2.png)
 
 지금까지 줄곧 그려왔던 동일한 정사각형을 그리는 함수는 그다지 유용하지 않다.
 하지만, 화면을 깨끗이 하고, 다음을 실행하자.
@@ -64,6 +68,8 @@ minutes: 20
 ~~~
 
 출력결과는 각각의 위쪽에 놓여진 8개 정사각형이 된다.
+
+![eight squares](fig/eight_squares.png)
 
 다른 방식으로도 동일한 것을 그릴 수 있다 --- 사실 [후반부 수업]()에서 다룰 예정이다 ---
 하지만, 이미 앞에서 함수에 명령어를 넣는 것이 다른 코드를 더 읽기 좋게 한다는 것을 봤다.
@@ -81,6 +87,8 @@ def square(length):
 ~~~
 
 함수 정의를 입력하게 되면, 이전 작성한 함수 자리를 차지한다.
+
+![square 20, square 30](fig/square20_30.png)
 
 함수내부에, `square` 함수는 `length`라는 **매개변수(parameter)**를 갖는다.
 변수 `side`가 루프에서 현재 위치를 추적한 것처럼, `length`는 호출될 때 `square`에 전달된 값을 저장한다.
@@ -111,6 +119,8 @@ def square(length):
 ...
 ~~~
 
+![square left 15](fig/square_left_15.png)
+
 그런데, 뭔가 현실적으로 이제 루프에 값을 사용하고 있다는 것에 주목하라.
 앞선 루프에 있는 숫자 리스트는 중요하지 않다 --- 이들 숫자 존재이유는 루프를 고정된 횟수만큼 반복하게 만드는 것이다.
 여기서 숫자 20, 40, 60 이 `square`에 전달되어 정사각형을 원하는 크기만큼 키우는데 있다. 
@@ -133,6 +143,8 @@ def square(length):
 
 하지만, 상기와 같이 호출하면 거북이가 다각형을 그린다.
 
+![hexagon](fig/hexagon.png)
+
 그리고, 만약 다음과 같이 호출하면, 
 
 ~~~ {.input}
@@ -140,6 +152,8 @@ def square(length):
 ~~~
 
 8각형을 그리게 된다.
+
+![octagon](fig/octagon.png)
 
 > ## 변수 이름(variable name) {.callout}
 >
@@ -159,6 +173,7 @@ def square(length):
 `flower` 함수는 매개변수 5개를 받는다. 
 첫번째 두 매개변수는 전체 꽃그리기를 제어하고, 나머지 세 매개변수는 각 꽃잎 형상을 제어한다.
 
+![eight-squares-flower](fig/eight-squares-flower.png)
 
 앞에서 한 것처럼 8각형 꽃을 상기 함수를 사용해서 그릴 수 있다:
 
@@ -167,6 +182,8 @@ def square(length):
 ~~~
 
 상기 코드가 의미하는 바는 "정사각형 8개를 그리는데, 크기는 각각 50 픽셀이고, 정사각형 사이는 45도 회전한다"
+
+![triangle-flower](fig/triangle-flower.png)
 
 상기 함수를 사용해서 다음과 같은 형상도 그릴 수 있다.
 
@@ -221,11 +238,17 @@ def flower(petal_sides, petal_angle, poly_sides, poly_length, poly_angle):
 1.  **콜스택**에 파이썬이 값 10을 놓는데 함수 호출에 전달되는 값이 또다른 함수 위에 쌓인다는 
     사실로부터 이름을 얻게 된다.
 
+![call-stack-01](fig/call-stack-01.png)
+
 2.  그리고 나서 새로운 변수 `first`를 생성하는데 **스택프레임(stack frame)**은 
     `one_plus_one` 함수 내부에서 발생하는 것을 추적하고 `first`에 값 11 (10 + 1)을 대입한다.
 
+![call-stack-02](fig/call-stack-02.png)
+
 3.  이제 `one_plus_one`가 `double`을 호출하고 나서, 
     파이썬이 또다른 스택 프레임을 생성하고 값 11을 전달한다.
+
+![call-stack-03](fig/call-stack-03.png)
 
     이제 `value`라는 이름을 갖는 변수가 두개 있음을 주목한다.
     하지만, 서로 다른 스택프레임에 있기 때문에, 실제로는 다른 변수다 --- 우연히 같은 이름을 갖게된 것이다.
@@ -233,8 +256,12 @@ def flower(petal_sides, petal_angle, poly_sides, poly_length, poly_angle):
 4.  `double`은 22 (11 * 2)를 반환한다. 그래서 파이썬이 해당 함수호출을 추적하는데 사용한 스택프레임을 버리고 
     다시 그 밑에 함수를 사용하기 시작한다. 그 스택프레임에는 `second`라고 새로 생성된 변수에 22 값을 놓는다:
 
+![call-stack-04](fig/call-stack-04.png)
+
 5.  마침내 함수 `one_plus_one`가 23(22+1)을 반환한다. 그래서 파이썬이 함수 호출 스택프레임을 버리고 나서
     최종 결과를 출력한다.
+
+[pythontutor.com](http://goo.gl/nPfnnt)에서 콜스택에 대한 자세한 정보 확인합니다.
 
 아마도 진행과정을 일일이 따라가는 것은 엄청난 수고지만, 절대적으로 필요하다.
 프로그램에 모든 변수가 한 장소에 저장되어 있다면 어떤 모습일지 상상해보자.
