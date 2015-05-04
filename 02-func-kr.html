@@ -53,17 +53,26 @@
 ...</code></pre>
 <p>상기 명령어를 실행하면 파이썬이 어떤 것도 출력하지 않고, 거북이는 움지이지 않는다. 왜냐하면, 실제로 파이썬에 어떤 것도 수행하도록 명령하지 않았기 때문이다. — 대신에 <em>만약 명령하면</em> 새로운 작업을 어떻게 수행하는지에 대한 것만 전달했다. 새로운 명령을 수행하는데, 거북이 메쏘드를 호출하는 것과 동일하게 함수를 <strong>호출(call)</strong>한다.</p>
 <pre class="input"><code>&gt;&gt;&gt; square()</code></pre>
+<div class="figure">
+<img src="fig/square1.png" alt="square1" /><p class="caption">square1</p>
+</div>
 <p>방금전에 발생한 것이 다음에 정리되어 있다.</p>
 <ol style="list-style-type: decimal">
 <li><code>def</code>를 사용해서 새로운 함수를 정의할 때, 첫번째 행 아래 들여쓰기된 명령어– 함수 <strong>몸통(body)</strong> –를 파이썬이 받아서 메모리에 저장한다.</li>
 <li>함수를 호출할 때는, 파이썬은 함수가 정의된 것을 찾아서 해당 함수 명령어를 실행한다.</li>
 </ol>
+<div class="figure">
+<img src="fig/square2.png" alt="square2" /><p class="caption">square2</p>
+</div>
 <p>지금까지 줄곧 그려왔던 동일한 정사각형을 그리는 함수는 그다지 유용하지 않다. 하지만, 화면을 깨끗이 하고, 다음을 실행하자.</p>
 <pre class="input"><code>&gt;&gt;&gt; for petal in range(8):
 ...     square()
 ...     turtle.left(45)
 ...</code></pre>
 <p>출력결과는 각각의 위쪽에 놓여진 8개 정사각형이 된다.</p>
+<div class="figure">
+<img src="fig/eight_squares.png" alt="eight squares" /><p class="caption">eight squares</p>
+</div>
 <p>다른 방식으로도 동일한 것을 그릴 수 있다 — 사실 <a href="">후반부 수업</a>에서 다룰 예정이다 — 하지만, 이미 앞에서 함수에 명령어를 넣는 것이 다른 코드를 더 읽기 좋게 한다는 것을 봤다. 또한 작성한 것을 재사용(re-use)할 수 있게 한다: 반복되는 같은 행을 재입력(re-enter)하지 않고, 원할 때마다 정사각형을 이제는 그릴 수 있다.</p>
 <p>물론, 정사각형 크기를 변경할 수만 있다면 더욱 유용할 것이다. 크기변경하는 함수를 다시 정의하자.</p>
 <pre class="input"><code>def square(length):
@@ -72,6 +81,9 @@
 ...         turtle.left(90)
 ...</code></pre>
 <p>함수 정의를 입력하게 되면, 이전 작성한 함수 자리를 차지한다.</p>
+<div class="figure">
+<img src="fig/square20_30.png" alt="square 20, square 30" /><p class="caption">square 20, square 30</p>
+</div>
 <p>함수내부에, <code>square</code> 함수는 <code>length</code>라는 <strong>매개변수(parameter)</strong>를 갖는다. 변수 <code>side</code>가 루프에서 현재 위치를 추적한 것처럼, <code>length</code>는 호출될 때 <code>square</code>에 전달된 값을 저장한다. 예를 들어, 만약 다음과 같이 코드를 작성한다면:</p>
 <pre class="input"><code>&gt;&gt;&gt; square(20)</code></pre>
 <p><code>length</code>는 값이 20을 갖게 된다. 만약 다음과 같이 작성한다면:</p>
@@ -81,6 +93,9 @@
 ...     square(size)
 ...     left(15)
 ...</code></pre>
+<div class="figure">
+<img src="fig/square_left_15.png" alt="square left 15" /><p class="caption">square left 15</p>
+</div>
 <p>그런데, 뭔가 현실적으로 이제 루프에 값을 사용하고 있다는 것에 주목하라. 앞선 루프에 있는 숫자 리스트는 중요하지 않다 — 이들 숫자 존재이유는 루프를 고정된 횟수만큼 반복하게 만드는 것이다. 여기서 숫자 20, 40, 60 이 <code>square</code>에 전달되어 정사각형을 원하는 크기만큼 키우는데 있다.</p>
 <p>만약 한개 매개변수가 잘 동작한다면, 두개 혹은 세개 매개변수는 어떨까?</p>
 <pre class="input"><code>&gt;&gt;&gt; def polygon(sides, length, angle):
@@ -91,9 +106,15 @@
 <p>다시 한번, 실제로 함수를 호출하기 전까지 아무것도 일어나지 않는다:</p>
 <pre class="input"><code>&gt;&gt;&gt; polygon(6, 30, 60)</code></pre>
 <p>하지만, 상기와 같이 호출하면 거북이가 다각형을 그린다.</p>
+<div class="figure">
+<img src="fig/hexagon.png" alt="hexagon" /><p class="caption">hexagon</p>
+</div>
 <p>그리고, 만약 다음과 같이 호출하면,</p>
 <pre class="input"><code>&gt;&gt;&gt; polygon(8, 30, 135)</code></pre>
 <p>8각형을 그리게 된다.</p>
+<div class="figure">
+<img src="fig/octagon.png" alt="octagon" /><p class="caption">octagon</p>
+</div>
 <div id="변수-이름variable-name" class="callout panel panel-info">
 <div class="panel-heading">
 <h2><span class="glyphicon glyphicon-pushpin"></span>변수 이름(variable name)</h2>
@@ -109,9 +130,15 @@
 ...         turtle.left(petal_angle)
 ...</code></pre>
 <p><code>flower</code> 함수는 매개변수 5개를 받는다. 첫번째 두 매개변수는 전체 꽃그리기를 제어하고, 나머지 세 매개변수는 각 꽃잎 형상을 제어한다.</p>
+<div class="figure">
+<img src="fig/eight-squares-flower.png" alt="eight-squares-flower" /><p class="caption">eight-squares-flower</p>
+</div>
 <p>앞에서 한 것처럼 8각형 꽃을 상기 함수를 사용해서 그릴 수 있다:</p>
 <pre class="input"><code>&gt;&gt;&gt; flower(8, 45, 4, 50, 90)</code></pre>
 <p>상기 코드가 의미하는 바는 “정사각형 8개를 그리는데, 크기는 각각 50 픽셀이고, 정사각형 사이는 45도 회전한다”</p>
+<div class="figure">
+<img src="fig/triangle-flower.png" alt="triangle-flower" /><p class="caption">triangle-flower</p>
+</div>
 <p>상기 함수를 사용해서 다음과 같은 형상도 그릴 수 있다.</p>
 <pre class="{.input"><code>&gt;&gt;&gt; flower(3, 120, 3, 50, 120)</code></pre>
 <p>두함수를 나란히 놓고 잠시동안 루프를 살펴보자:</p>
@@ -139,13 +166,35 @@
 ...</code></pre>
 <p>그리고, <code>one_plus_one(10)</code>을 호출할 때, 무슨 일이 발생하는지 다음에 나와있다.</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>콜스택</strong>에 파이썬이 값 10을 놓는데 함수 호출에 전달되는 값이 또다른 함수 위에 쌓인다는 사실로부터 이름을 얻게 된다.</p></li>
-<li><p>그리고 나서 새로운 변수 <code>first</code>를 생성하는데 <strong>스택프레임(stack frame)</strong>은 <code>one_plus_one</code> 함수 내부에서 발생하는 것을 추적하고 <code>first</code>에 값 11 (10 + 1)을 대입한다.</p></li>
-<li><p>이제 <code>one_plus_one</code>가 <code>double</code>을 호출하고 나서, 파이썬이 또다른 스택 프레임을 생성하고 값 11을 전달한다.</p>
-<p>이제 <code>value</code>라는 이름을 갖는 변수가 두개 있음을 주목한다. 하지만, 서로 다른 스택프레임에 있기 때문에, 실제로는 다른 변수다 — 우연히 같은 이름을 갖게된 것이다.</p></li>
-<li><p><code>double</code>은 22 (11 * 2)를 반환한다. 그래서 파이썬이 해당 함수호출을 추적하는데 사용한 스택프레임을 버리고 다시 그 밑에 함수를 사용하기 시작한다. 그 스택프레임에는 <code>second</code>라고 새로 생성된 변수에 22 값을 놓는다:</p></li>
-<li><p>마침내 함수 <code>one_plus_one</code>가 23(22+1)을 반환한다. 그래서 파이썬이 함수 호출 스택프레임을 버리고 나서 최종 결과를 출력한다.</p></li>
+<li><strong>콜스택</strong>에 파이썬이 값 10을 놓는데 함수 호출에 전달되는 값이 또다른 함수 위에 쌓인다는 사실로부터 이름을 얻게 된다.</li>
 </ol>
+<div class="figure">
+<img src="fig/call-stack-01.png" alt="call-stack-01" /><p class="caption">call-stack-01</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>그리고 나서 새로운 변수 <code>first</code>를 생성하는데 <strong>스택프레임(stack frame)</strong>은 <code>one_plus_one</code> 함수 내부에서 발생하는 것을 추적하고 <code>first</code>에 값 11 (10 + 1)을 대입한다.</li>
+</ol>
+<div class="figure">
+<img src="fig/call-stack-02.png" alt="call-stack-02" /><p class="caption">call-stack-02</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>이제 <code>one_plus_one</code>가 <code>double</code>을 호출하고 나서, 파이썬이 또다른 스택 프레임을 생성하고 값 11을 전달한다.</li>
+</ol>
+<div class="figure">
+<img src="fig/call-stack-03.png" alt="call-stack-03" /><p class="caption">call-stack-03</p>
+</div>
+<pre><code>이제 `value`라는 이름을 갖는 변수가 두개 있음을 주목한다.
+하지만, 서로 다른 스택프레임에 있기 때문에, 실제로는 다른 변수다 --- 우연히 같은 이름을 갖게된 것이다.</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><code>double</code>은 22 (11 * 2)를 반환한다. 그래서 파이썬이 해당 함수호출을 추적하는데 사용한 스택프레임을 버리고 다시 그 밑에 함수를 사용하기 시작한다. 그 스택프레임에는 <code>second</code>라고 새로 생성된 변수에 22 값을 놓는다:</li>
+</ol>
+<div class="figure">
+<img src="fig/call-stack-04.png" alt="call-stack-04" /><p class="caption">call-stack-04</p>
+</div>
+<ol start="5" style="list-style-type: decimal">
+<li>마침내 함수 <code>one_plus_one</code>가 23(22+1)을 반환한다. 그래서 파이썬이 함수 호출 스택프레임을 버리고 나서 최종 결과를 출력한다.</li>
+</ol>
+<p><a href="http://goo.gl/nPfnnt">pythontutor.com</a>에서 콜스택에 대한 자세한 정보 확인합니다.</p>
 <p>아마도 진행과정을 일일이 따라가는 것은 엄청난 수고지만, 절대적으로 필요하다. 프로그램에 모든 변수가 한 장소에 저장되어 있다면 어떤 모습일지 상상해보자. 새로운 함수를 작성할 때마다, 우연히 잘못된 변수를 참조하지 않도록 다른 누군가 사용한 변수명을 사용하지 않도록 주의해야만 한다. 주의를 하려면, 호출하는 모든 함수에 있는 단하나의 줄도 빠짐없이 읽어야만 한다. 설사 이와 같은 작업을 수행할 수 있을 정도로 인내심을 가질 수 있지만, 함수를 작성한 누군가 다시 코드를 수정하고 변수 이름을 변경하는 순간 바로 작성한 프로그램은 곧 망가진다.</p>
 <p>여기 핵심적인 아이디어가 <strong>캡슐화(encapsulation)</strong>다. 그리고, 올바른 이해할 수 있는 프로그램을 작성하는 것이 매우 중요하다. 함수의 역할은 몇가지 연산작업을 하나로 바꿔주는 것이다. 매번 무언가를 수행할 때마다 수십개 혹은 수백개 문장 대신에 단하나 함수 호출로 생각을 단순화하는데 있다. 이것이 가능한 것은 함수가 서로 서로 간섭하지 않는 것이다; 만약 서로 간섭하게 된다면, 다시한번 세세한 부분에 주의를 기울여야 하고, 급격하게 머리속 단기 기억장소에 부하를 주게 된다.</p>
         </div>
